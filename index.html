@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajiboso Toluwanimi | Product Designer & Engineer</title>
+    <meta name="description" content="Portfolio of Ajiboso Toluwanimi - Bridging the gap between Product Design, Engineering, and Strategy.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +20,15 @@
             color: #ececec;
             overflow-x: hidden;
             margin: 0;
+            -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, .font-heading {
             font-family: 'Space Grotesk', sans-serif;
         }
         .glass {
-            background: rgba(15, 15, 20, 0.6);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 20, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .text-gradient {
@@ -36,16 +39,17 @@
         .bento-card {
             background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .bento-card:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(255,255,255,0) 100%);
-            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, rgba(255,255,255,0) 100%);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.2);
         }
 
         @keyframes fade-slide-up {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-slide-up {
@@ -54,21 +58,38 @@
         }
         @keyframes subtle-float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); }
         }
         .animate-subtle-float {
-            animation: subtle-float 6s ease-in-out infinite;
+            animation: subtle-float 8s ease-in-out infinite;
         }
         
+        /* Hide scrollbar but keep functionality */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+
         #root:empty::before {
-            content: 'Loading Portfolio...';
+            content: 'INITIALIZING...';
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            color: #666;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            color: #444;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            background: #050505;
         }
     </style>
     <script type="importmap">
@@ -78,8 +99,8 @@
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "lucide-react": "https://esm.sh/lucide-react@0.475.0?external=react",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
 </script>
