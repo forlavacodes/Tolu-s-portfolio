@@ -520,10 +520,9 @@ const ResumeManagementView = () => {
           </div>
         </div>
 
-        {/* Secret Admin Trigger Dot: Invisible but clickable */}
         <div 
           onClick={handleSecretTrigger}
-          className="fixed bottom-4 right-4 w-4 h-4 rounded-full bg-white/0 cursor-pointer z-[150] hover:bg-white/5"
+          className="fixed bottom-4 right-4 w-6 h-6 rounded-full bg-white/0 cursor-pointer z-[150] hover:bg-white/5"
         />
 
         {loginVisible && (
@@ -561,7 +560,6 @@ const ResumeManagementView = () => {
 
 const HomeSections = () => (
   <div className="space-y-40 md:space-y-64 pb-32">
-    {/* Hero Section */}
     <section id="top" className="relative pt-56 pb-20 px-6 overflow-hidden">
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-12">
@@ -593,7 +591,6 @@ const HomeSections = () => (
       </div>
     </section>
 
-    {/* Works Section */}
     <section id="experience" className="px-6 scroll-mt-48">
       <div className="container mx-auto">
         <SectionHeader 
@@ -609,7 +606,6 @@ const HomeSections = () => (
       </div>
     </section>
 
-    {/* Skills Section */}
     <section id="skills" className="px-6 scroll-mt-48">
       <div className="container mx-auto">
         <SectionHeader 
@@ -636,7 +632,6 @@ const HomeSections = () => (
       </div>
     </section>
 
-    {/* Education Section */}
     <section id="education" className="px-6 scroll-mt-48">
       <div className="container mx-auto">
         <SectionHeader 
@@ -664,7 +659,6 @@ const HomeSections = () => (
       </div>
     </section>
 
-    {/* Contact & Bio Section */}
     <section id="contact" className="px-6 scroll-mt-48">
       <div className="container mx-auto grid lg:grid-cols-2 gap-20">
         <div>
@@ -724,8 +718,27 @@ const App = () => {
   );
 };
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
+// --- Initialization with Error Handling ---
+try {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) throw new Error("Root element '#root' not found in document.");
+  
   const root = ReactDOM.createRoot(rootElement);
-  root.render(<App />);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} catch (error) {
+  console.error("Critical rendering error:", error);
+  const rootElement = document.getElementById('root');
+  if (rootElement) {
+    rootElement.innerHTML = `
+      <div style="padding: 2rem; color: #ff4444; font-family: sans-serif; text-align: center; background: #000; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <h1 style="margin-bottom: 1rem;">System Launch Failed</h1>
+        <p style="color: #888;">${error instanceof Error ? error.message : "Unexpected initialization error."}</p>
+        <button onclick="window.location.reload()" style="margin-top: 2rem; padding: 0.75rem 1.5rem; background: #333; color: white; border: none; border-radius: 8px; cursor: pointer;">Retry Bootup</button>
+      </div>
+    `;
+  }
 }
